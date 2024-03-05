@@ -1,5 +1,5 @@
 from turtle import Turtle
-
+WINNING_SCORE = 10
 FONT = ("Courier", 24, "normal")
 class ScoreBoard(Turtle):
     def __init__(self):
@@ -27,3 +27,8 @@ class ScoreBoard(Turtle):
         self.clear()
         self.show_score()
 
+    def game_over(self):
+        if self.left_player_score >= WINNING_SCORE or self.right_player_score >= WINNING_SCORE:
+            return True
+        else:
+            return False

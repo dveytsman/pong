@@ -4,7 +4,7 @@ from ball import Ball
 import time
 from scoreboard import ScoreBoard
 
-
+MOVE_SPEED = 0.1
 screen = Screen()
 screen.bgcolor("black")
 screen.setup(width=800, height=600)
@@ -26,8 +26,10 @@ screen.onkey(l_paddle.down, "s")
 score = ScoreBoard()
 game_on = True
 while game_on:
+    if score.game_over():
+        game_on = False
     screen.update()
-    time.sleep(.05)
+    time.sleep(game_ball.move_speed)
     game_ball.move()
 
     # Detect collision
@@ -36,6 +38,7 @@ while game_on:
 
     if game_ball.distance(r_paddle) < 50 and game_ball.xcor() > 320:
         game_ball.hit()
+
     
     if game_ball.distance(l_paddle) < 50 and game_ball.xcor() < -320:
         game_ball.hit()
