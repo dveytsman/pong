@@ -8,6 +8,10 @@ class Ball(Turtle):
         self.up()
         self.x_move = 10
         self.y_move = 10
+    
+    def reset(self):
+        self.goto(0,0)
+        self.hit()
 
     def move(self):
         new_y = self.ycor() + self.y_move
